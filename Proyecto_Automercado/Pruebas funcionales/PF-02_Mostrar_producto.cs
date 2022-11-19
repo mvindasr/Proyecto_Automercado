@@ -4,7 +4,7 @@ using OpenQA.Selenium.Chrome;
 namespace Proyecto_Automercado
 {
     [TestClass]
-    public class PI02
+    public class PF02
     {
         IWebDriver driver;
         [TestInitialize]

@@ -17,8 +17,4 @@
     <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="107.0.5304.6200" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Pruebas de humo\" />
-  </ItemGroup>
-
 </Project>
