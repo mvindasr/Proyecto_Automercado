@@ -19,8 +19,6 @@
 
   <ItemGroup>
     <Folder Include="Pruebas de humo\" />
-    <Folder Include="Pruebas de integración\" />
-    <Folder Include="Pruebas funcionales\" />
   </ItemGroup>
 
 </Project>
