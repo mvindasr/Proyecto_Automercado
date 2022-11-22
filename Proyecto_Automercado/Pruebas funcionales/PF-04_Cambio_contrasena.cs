@@ -11,7 +11,7 @@ namespace Proyecto_Automercado
         public void Start()
         {
             driver = new ChromeDriver();
-            driver.Navigate().GoToUrl("");
+            driver.Navigate().GoToUrl("https://automercado.cr/");
             driver.Manage().Window.Maximize();
         }
 
@@ -19,8 +19,8 @@ namespace Proyecto_Automercado
         public void Test1()
         {
 
-            string var1 = "";
-            string var2 = "";
+            string var1 = "hola";
+            string var2 = "hola";
 
             Assert.AreEqual(var1, var2);
         }

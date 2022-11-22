@@ -23,6 +23,7 @@ namespace Proyecto_Automercado
             string var2 = "";
 
             Assert.AreEqual(var1, var2);
+          
         }
 
         [TestCleanup]
