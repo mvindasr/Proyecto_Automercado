@@ -65,7 +65,7 @@ namespace Proyecto_Automercado
                     //Se detecta nueva pestaña
                     if (Utilities.Helpers.confirmNewTab(driver))
                     {
-                        Debug.WriteLine("Resultado 3: Una nueva pestaña fue abierta desde el módulo.");
+                        Debug.WriteLine("Resultado #3: Una nueva pestaña fue abierta desde el módulo.");
 
                         //Desplazarse a nueva pestaña para acceder al PDF
 
@@ -75,17 +75,17 @@ namespace Proyecto_Automercado
 
                         if (Utilities.Helpers.CompareData(parentTabTitle, driver.Title))
                         {
-                            Debug.WriteLine("Resultado 4: Falla, el sistema se mantiene en la ventana padre '"+parentTabTitle+"'.");
+                            Debug.WriteLine("Resultado #4: Falla, el sistema se mantiene en la ventana padre '"+parentTabTitle+"'.");
                         }
                         else
                         {
-                            Debug.WriteLine("Resultado 4: Nueva ventana con reglamento PDF detectada con éxito.");
+                            Debug.WriteLine("Resultado #4: Nueva ventana con reglamento PDF detectada con éxito.");
                         }
                         Thread.Sleep(4000);
                     }
                     else
                     {
-                        Debug.WriteLine("Resultado 3: No se abrió una nueva pestaña.");
+                        Debug.WriteLine("Resultado #3: No se abrió una nueva pestaña.");
                     }
 
                 }
