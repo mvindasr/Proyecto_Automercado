@@ -1,5 +1,8 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using Proyecto_Automercado.Utilities;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
 
 namespace Proyecto_Automercado
 {
@@ -13,62 +16,88 @@ namespace Proyecto_Automercado
             driver = new ChromeDriver();
             driver.Navigate().GoToUrl("https://automercado.cr");
             driver.Manage().Window.Maximize();
+            // Esto es para que espere 5 segundos entre cada acción.
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
 
-            
+            AddProductTest(driver);
         }
 
         [TestMethod]
-        public void loginProvicional()
+        public void AddProductTest(IWebDriver driver)
         {
-            driver.FindElement(By.Id("login")).Click();
+            // Constantes para contraseña y clave.
+            string EMAIL = "tomatejuan@gmail.com";
+            string PASS = "5Y5&QD6F9mzLHMm!";
 
-            //Busca el input de la email  y escribe el email
-            var emailInput = driver.FindElement(By.Id("email"));
-            emailInput.SendKeys("tomatejuan@gmail.com");
+            // Inicia sesión
+            Helpers.Login(driver, EMAIL, PASS);
+            Debug.WriteLine("Paso #1: Inicio de sesión...");
 
-            //Busca el input de la contraseña y escribe la contraseña
-            var passwordInput = driver.FindElement(By.Id("password"));
-            passwordInput.SendKeys("5Y5&QD6F9mzLHMm!");
+            // Busca los contenedores de las categorias de producto y los inserta en un arreglo.
+            var AllCategoriesProduct = driver.FindElements(By.ClassName("slider-text"));
+            
 
-            //Encuentra el botón de inicio de sesión y le da click. 
-            driver.FindElement(
-                By.XPath("/html/body/ngb-modal-window[@role='dialog']/div[@role='document']//am-login-modal//" +
-                "form[@role='form']//am-button/button[@type='submit']")).Click();
+            Debug.WriteLine("Paso #2: Busca todas las categorías de producto.");
+            for (int i = 0; i < AllCategoriesProduct.Count; i++)
+            {
+                // Despliega lista de las categorias.
+                Debug.WriteLine(i + ". "+ AllCategoriesProduct[i].GetAttribute("innerText"));
 
-            //Cerrar modales -- no funciona
-            driver.FindElement(By.XPath("/body[@class='modal-open']/div[@class='introjs-overlay']")).Click();
+               
+            }
+
+            AllCategoriesProduct[17].Click();
+
+            //driver.FindElements(By.TagName("span")).Where(elem => elem.Text.Trim() == "Nacionales").FirstOrDefault().Click();
+
+            // Helpers.GetByXPathWithDelay(driver, "//am-main//am-navbar[@class='ng-star-inserted']/nav//a[@href='/']/img", 10)?.Click();
+
+           // Utilities.Helpers.GetByXPathWithDelay(driver, "/html//div[@role='dialog']/div[@class='introjs-tooltipbuttons']/a[@role='button']", 10)?.Click();
+            // Utilities.Helpers.GetByXPathWithDelay(driver, "/html//ngb-modal-window[@role='dialog']/div[@role='document']//app-onboarding//am-button/button[@type='button']", 10)?.Click();
+
+            /*
+
+            // Entra dentro de cada categoría de producto y vuelve con la siguiente.
+            Debug.WriteLine("Paso #3: Click dentro de cada categoria.");
+            for (int i = 0; i < AllCategoriesProduct.Count; i++)
+            {
+                
+               Debug.WriteLine("Entro en la categorìa: " + AllCategoriesProduct[i].GetAttribute("innerText"));
+
+     
+
+                AllCategoriesProduct[i].Click();
+
+                // driver.FindElement(By.LinkText("/content/images/logoAM.svg")).Click();
+
+                Helpers.GetByXPathWithDelay(driver, "//am-main//am-navbar[@class='ng-star-inserted']/nav//a[@href='/']/img", 10)?.Click();
+
+                // Cerrar modales
+                Utilities.Helpers.GetByXPathWithDelay(driver, "/html//div[@role='dialog']/div[@class='introjs-tooltipbuttons']/a[@role='button']", 10)?.Click();
+                Utilities.Helpers.GetByXPathWithDelay(driver, "/html//ngb-modal-window[@role='dialog']/div[@role='document']//app-onboarding//am-button/button[@type='button']", 10)?.Click();
 
 
-       
+            }
+            */
+        }
+
+
+
+
+
 
         }
 
-        public void Test1()
-        {
-            loginProvicional();
+     
 
-          var abarrotes = driver.FindElement(By.XPath("/html//am-main//am-home[@class='ng-star-inserted']/am-our-halls//section//div[@class='col-12']/div/div[1]/am-product-category//img[@alt='Abarrotes']"));
-           abarrotes.Click();
-            // get findelements con Strings, hacer ciclo en la lista para ver el producto. Con listas.
-
-           // driver.FindElements(By.ClassName());
-            var endulcorante = driver.FindElement(By.XPath("/html//am-main//am-product-search[@class='ng-star-inserted']/div[@class='list']/div[@class='container']/div/div[@class='col-12 col-lg-10']/div//div[@class='grid-square']/div[1]/am-product-list//div[@class='card card-product']//am-product-button//button[@type='button']"));
-            endulcorante.Click();
-
-
-            // string var1 = ""; 
-            // string var2 = "";
-
-            // Assert.AreEqual(var1, var2);
-        }
+   
+      /*
 
         [TestCleanup]
-        public void Fin()
+    public void Fin()
         {
-            // driver.Quit();
+             driver.Quit();
         }
-
-
-
+      */
     }
-}
+
