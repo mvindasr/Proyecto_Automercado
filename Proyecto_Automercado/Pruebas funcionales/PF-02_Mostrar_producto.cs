@@ -46,17 +46,21 @@ namespace Proyecto_Automercado
                
             }
 
-            AllCategoriesProduct[17].Click();
+
+            /*
+             * AllCategoriesProduct[17].Click();
+            Helpers.GetByXPathWithDelay(driver, "//am-main//am-navbar[@class='ng-star-inserted']/nav//a[@href='/']/img", 10)?.Click();
+            AllCategoriesProduct[0].Click(); */
 
             //driver.FindElements(By.TagName("span")).Where(elem => elem.Text.Trim() == "Nacionales").FirstOrDefault().Click();
 
             // Helpers.GetByXPathWithDelay(driver, "//am-main//am-navbar[@class='ng-star-inserted']/nav//a[@href='/']/img", 10)?.Click();
 
-           // Utilities.Helpers.GetByXPathWithDelay(driver, "/html//div[@role='dialog']/div[@class='introjs-tooltipbuttons']/a[@role='button']", 10)?.Click();
+            // Utilities.Helpers.GetByXPathWithDelay(driver, "/html//div[@role='dialog']/div[@class='introjs-tooltipbuttons']/a[@role='button']", 10)?.Click();
             // Utilities.Helpers.GetByXPathWithDelay(driver, "/html//ngb-modal-window[@role='dialog']/div[@role='document']//app-onboarding//am-button/button[@type='button']", 10)?.Click();
 
-            /*
 
+            
             // Entra dentro de cada categoría de producto y vuelve con la siguiente.
             Debug.WriteLine("Paso #3: Click dentro de cada categoria.");
             for (int i = 0; i < AllCategoriesProduct.Count; i++)
@@ -73,12 +77,12 @@ namespace Proyecto_Automercado
                 Helpers.GetByXPathWithDelay(driver, "//am-main//am-navbar[@class='ng-star-inserted']/nav//a[@href='/']/img", 10)?.Click();
 
                 // Cerrar modales
-                Utilities.Helpers.GetByXPathWithDelay(driver, "/html//div[@role='dialog']/div[@class='introjs-tooltipbuttons']/a[@role='button']", 10)?.Click();
-                Utilities.Helpers.GetByXPathWithDelay(driver, "/html//ngb-modal-window[@role='dialog']/div[@role='document']//app-onboarding//am-button/button[@type='button']", 10)?.Click();
+                 Utilities.Helpers.GetByXPathWithDelay(driver, "/html//div[@role='dialog']/div[@class='introjs-tooltipbuttons']/a[@role='button']", 10)?.Click();
+                 Utilities.Helpers.GetByXPathWithDelay(driver, "/html//ngb-modal-window[@role='dialog']/div[@role='document']//app-onboarding//am-button/button[@type='button']", 10)?.Click();
 
 
             }
-            */
+            
         }
 
 
