@@ -1,6 +1,9 @@
-﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
-using SeleniumExtras.WaitHelpers;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Proyecto_Automercado.Utilities
 {
@@ -99,6 +102,35 @@ namespace Proyecto_Automercado.Utilities
             catch
             {
                 return null;
+            }
+        }
+
+        public static bool confirmNewTab(IWebDriver driver)
+        {
+            IList<string> allTabs = driver.WindowHandles;
+
+            if (allTabs.Count > 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public static void switchToNewGeneratedTab(IWebDriver driver, string parentTab)
+        {
+            string newTab = "newTab";
+            IList<string> allTabs = driver.WindowHandles;
+            for (int i = 0; i < allTabs.Count; i++)
+            {
+                
+                if (allTabs[i] != parentTab)
+                {
+                    newTab = allTabs[i];
+                    driver.SwitchTo().Window(newTab);
+                }
             }
         }
     }
