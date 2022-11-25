@@ -41,7 +41,7 @@ namespace Proyecto_Automercado
 
             Debug.WriteLine("Contador del AllCategories" + AllCategoriesProduct.Count);
 
-            // RECORDAR PONER EL COUNT ACA
+            
             Debug.WriteLine("Paso #2: Busca todas las categorías de producto.");
             for (int i = 0; i < AllCategoriesProduct.Count; i++)
             {
@@ -61,11 +61,16 @@ namespace Proyecto_Automercado
 
                 Thread.Sleep(1000);
                 var category = categoryStrins[i];
+
+                // Da click a la categoría.
                 driver.FindElement(By.XPath("//*[contains(text(), '" + category + "')]")).Click();
                 
+                //Revisa los productos por categoría.
                 ProductReview(category);
 
                 Thread.Sleep(3000);
+
+                // Vuelve al home.
                 var back = Helpers.GetByXPathWithDelay(driver, "//am-main//am-navbar[@class='ng-star-inserted']/nav//a[@href='/']/img", 2);
                 if (back == null)
                 {
@@ -95,7 +100,7 @@ namespace Proyecto_Automercado
             for (int i = 0; i < 5; i++)
             {
                 // Despliega lista de las productos.
-                Debug.WriteLine(i + ". " + AllProducts[i].GetAttribute("innerText"));
+               // Debug.WriteLine(i + ". " + AllProducts[i].GetAttribute("innerText"));
                 productsString.Add(AllProducts[i].GetAttribute("innerText"));
             }
 
