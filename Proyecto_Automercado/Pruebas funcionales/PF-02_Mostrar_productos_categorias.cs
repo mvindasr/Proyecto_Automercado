@@ -104,7 +104,7 @@ namespace Proyecto_Automercado
                 productsString.Add(AllProducts[i].GetAttribute("innerText"));
             }
 
-            Debug.WriteLine("Paso #5: Calcula cantidad de productos.");
+            Debug.WriteLine("Paso #4: Calcula cantidad de productos.");
             if (productsString.Count < 5)
             {
                 Debug.WriteLine("Resultado #1: ");
