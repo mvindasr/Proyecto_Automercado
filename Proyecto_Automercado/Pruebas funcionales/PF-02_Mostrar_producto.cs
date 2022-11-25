@@ -43,8 +43,14 @@ namespace Proyecto_Automercado
                 // Despliega lista de las categorias.
                 Debug.WriteLine(i + ". "+ AllCategoriesProduct[i].GetAttribute("innerText"));
 
-               
+           
+
+                AllCategoriesProduct[i].Click();
+
             }
+
+
+           
 
 
             /*
@@ -60,7 +66,7 @@ namespace Proyecto_Automercado
             // Utilities.Helpers.GetByXPathWithDelay(driver, "/html//ngb-modal-window[@role='dialog']/div[@role='document']//app-onboarding//am-button/button[@type='button']", 10)?.Click();
 
 
-            
+            /*
             // Entra dentro de cada categoría de producto y vuelve con la siguiente.
             Debug.WriteLine("Paso #3: Click dentro de cada categoria.");
             for (int i = 0; i < AllCategoriesProduct.Count; i++)
@@ -87,21 +93,22 @@ namespace Proyecto_Automercado
 
 
 
-
+   */
 
 
         }
 
-     
 
-   
-      /*
 
-        [TestCleanup]
-    public void Fin()
-        {
-             driver.Quit();
-        }
-      */
+
+        /*
+
+          [TestCleanup]
+      public void Fin()
+          {
+               driver.Quit();
+          }
+        */
     }
 
+}
