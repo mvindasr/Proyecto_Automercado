@@ -108,12 +108,12 @@ namespace Proyecto_Automercado
             if (productsString.Count < 5)
             {
                 Debug.WriteLine("Resultado #1: ");
-                Debug.WriteLine("La categoria: " + categoria + ": No tiene almenos 5 productos.");
+                Debug.WriteLine("La categoria: " + categoria + ": No tiene al menos 5 productos.");
             }
             else
             {
                 Debug.WriteLine("Resultado #2: ");
-                Debug.WriteLine("La categoria: " + categoria + ": Si tiene almenos 5 productos.");
+                Debug.WriteLine("La categoria: " + categoria + ": Si tiene al menos 5 productos.");
             }
 
         }
