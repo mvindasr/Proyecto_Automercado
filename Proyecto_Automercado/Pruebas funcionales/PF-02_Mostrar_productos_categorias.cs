@@ -16,14 +16,14 @@ namespace Proyecto_Automercado
             driver = new ChromeDriver();
             driver.Navigate().GoToUrl("https://automercado.cr");
             driver.Manage().Window.Maximize();
-            // Esto es para que espere 5 segundos entre cada acción.
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(1);
 
-            AddProductTest(driver);
+          
         }
 
+      
+        
         [TestMethod]
-        public void AddProductTest(IWebDriver driver)
+        public void AddProductTest()
         {
             // Constantes para contraseña y clave.
             string EMAIL = "tomatejuan@gmail.com";
@@ -32,31 +32,38 @@ namespace Proyecto_Automercado
             // Inicia sesión
             Helpers.Login(driver, EMAIL, PASS);
             Debug.WriteLine("Paso #1: Inicio de sesión...");
-
+            Thread.Sleep(3000);
+            
             // Busca los contenedores de las categorias de producto y los inserta en un arreglo.
             var AllCategoriesProduct = driver.FindElements(By.ClassName("slider-text"));
            
             List<string> categoryStrins = new List<string>();
 
-            
+            Debug.WriteLine("Contador del AllCategories" + AllCategoriesProduct.Count);
+
+            // RECORDAR PONER EL COUNT ACA
             Debug.WriteLine("Paso #2: Busca todas las categorías de producto.");
             for (int i = 0; i < AllCategoriesProduct.Count; i++)
             {
+
+                
                 // Despliega lista de las categorias.
                 Debug.WriteLine(i + ". "+ AllCategoriesProduct[i].GetAttribute("innerText"));
                 categoryStrins.Add(AllCategoriesProduct[i].GetAttribute("innerText")); 
             }
-           
-           
+
+            Debug.WriteLine("Contador del categoryStrings: " + categoryStrins.Count);
+
+
             for (int i = 0; i < categoryStrins.Count; i++)
             {
                 Debug.WriteLine(categoryStrins.ElementAt(i));
 
-                Thread.Sleep(3000);
+                Thread.Sleep(1000);
                 var category = categoryStrins[i];
                 driver.FindElement(By.XPath("//*[contains(text(), '" + category + "')]")).Click();
                 
-                productReview(category);
+                ProductReview(category);
 
                 Thread.Sleep(3000);
                 var back = Helpers.GetByXPathWithDelay(driver, "//am-main//am-navbar[@class='ng-star-inserted']/nav//a[@href='/']/img", 2);
@@ -74,9 +81,10 @@ namespace Proyecto_Automercado
         }
 
 
-        public void productReview(string categoria)
+        public void ProductReview(string categoria)
         {
 
+            Thread.Sleep(1000);
             // Busca los productos.
             var AllProducts = driver.FindElements(By.ClassName("title-product"));
 
@@ -84,7 +92,7 @@ namespace Proyecto_Automercado
 
 
             Debug.WriteLine("Paso #3: Busca todas las categorías de producto.");
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 5; i++)
             {
                 // Despliega lista de las productos.
                 Debug.WriteLine(i + ". " + AllProducts[i].GetAttribute("innerText"));
@@ -92,9 +100,10 @@ namespace Proyecto_Automercado
             }
 
             Debug.WriteLine("Paso #5: Calcula cantidad de productos.");
-            if (productsString.Count < 5) {
+            if (productsString.Count < 5)
+            {
                 Debug.WriteLine("Resultado #1: ");
-                Debug.WriteLine("La categoria: "+ categoria + ": No tiene almenos 5 productos.");
+                Debug.WriteLine("La categoria: " + categoria + ": No tiene almenos 5 productos.");
             }
             else
             {
