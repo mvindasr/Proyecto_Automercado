@@ -96,7 +96,7 @@ namespace Proyecto_Automercado
             List<string> productsString = new List<string>();
 
 
-            Debug.WriteLine("Paso #3: Busca todas las categorías de producto.");
+            Debug.WriteLine("Paso #3: Busca todos los productos de una categoría.");
             for (int i = 0; i < 5; i++)
             {
                 // Despliega lista de las productos.
