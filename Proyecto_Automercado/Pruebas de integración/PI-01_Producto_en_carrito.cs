@@ -52,11 +52,11 @@ namespace Proyecto_Automercado
             //Buscar el producto
             searchInput.SendKeys("Shampoo Dove");
             searchInput.SendKeys(Keys.Enter);
-            Debug.WriteLine("Paso #1: Buscando producto");
+            Debug.WriteLine("Paso #1: Buscar producto");
             Thread.Sleep(10000);
             //Agregar el producto
             driver.FindElement(By.XPath("/html/body/am-main//am-product-search[@class='ng-star-inserted']/div[@class='list']/div[@class='container']/div/div[@class='col-12 col-lg-10']//div[@class='grid-square']/div[1]/am-product-list//div[@class='card card-product']//am-product-button//button[@type='button']")).Click();
-            Debug.WriteLine("Click en qué elemento?");
+            Debug.WriteLine("Paso #2: Agregar producto al carrito");
             
         }
 
@@ -64,7 +64,7 @@ namespace Proyecto_Automercado
         {
             //abre el carrito
             driver.FindElement(By.XPath("/html//am-main//am-navbar[@class='ng-star-inserted']/nav//ul[@class='navbar-nav row w-100']//am-shopping-cart/div")).Click();
-            Debug.WriteLine("Paso #3: Abre el carrito");
+            Debug.WriteLine("Paso #3: Abrir el carrito");
             Thread.Sleep(10000);
            
         }             
@@ -73,7 +73,7 @@ namespace Proyecto_Automercado
 
             //Botón eliminar
             driver.FindElement(By.XPath("/html/body/am-main//am-navbar[@class='ng-star-inserted']/nav//ul[@class='navbar-nav row w-100']//am-shopping-cart/form/div//a[@href='javascript:;']/i")).Click();
-            Debug.WriteLine("Paso #5: Se elimina el producto del carrito");
+            Debug.WriteLine("Paso #4: Se elimina el producto del carrito");
         }
 
         [TestCleanup]
