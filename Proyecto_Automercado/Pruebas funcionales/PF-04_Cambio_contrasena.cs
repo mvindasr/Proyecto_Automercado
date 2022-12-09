@@ -77,7 +77,7 @@ namespace Proyecto_Automercado
                     // Verificar que las contraseñas son iguales en los dos intentos
                     if (Utilities.Helpers.ElementExistsByPath(driver, "/html/body/ngb-modal-window[@role='dialog']/div[@role='document']//am-modal-change-password/div[@class='modal-profile']//form[@role='form']//small[.=' Las contraseñas deben ser iguales ']"))
                     {
-                        Debug.WriteLine("Resultado #3: Falla, las contraseñas nuevas ingresadas no coinciden.");
+                        Debug.WriteLine("Resultado #3: Las contraseñas nuevas ingresadas no coinciden.");
                     }
                     else
                     {

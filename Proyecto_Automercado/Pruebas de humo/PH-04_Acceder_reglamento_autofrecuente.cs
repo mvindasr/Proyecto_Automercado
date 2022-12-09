@@ -30,7 +30,12 @@ namespace Proyecto_Automercado
             Utilities.Helpers.Login(driver, username, password);
 
             //Abrir el módulo de Autofrecuente
-            Debug.WriteLine("Paso #1: Buscar y hacer clic al item del navbar de AutoFrecuente...");
+            Debug.WriteLine("Paso #1: Buscar y hacer clic al ítem del navbar de AutoFrecuente...");
+
+            // Habilitar el menú haciendo un scroll-up (desaparece después del login)
+            Thread.Sleep(1000);
+            driver.FindElement(By.CssSelector("body")).SendKeys(Keys.ArrowUp);
+            Thread.Sleep(1000);
             var autofrecuenteModule = Utilities.Helpers.GetByXPath(driver, "//am-main//am-home[@class='ng-star-inserted']/am-home-menu/nav//ul[@class='navbar-nav']//a[@href='/autofrecuente']");
 
             if (autofrecuenteModule == null)
