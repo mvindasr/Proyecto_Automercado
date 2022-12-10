@@ -77,6 +77,7 @@ namespace Proyecto_Automercado
         }
 
         [TestCleanup]
+
         public void Fin()
         {
             driver.Quit();
